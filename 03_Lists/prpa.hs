@@ -43,5 +43,19 @@ druhy(_:y:_) = y
 telo(_:telo) = telo
 
 --napiste funkci posledni, ktera vrati posledni prvek seznamu
---TODO: Promyslet prosím nezapomeň na to :[
-posledni
+posledni [x] = x
+posledni (_:xs) = posledni xs
+
+--napiste funkci posledni, ktera vrati predposledni prvek seznamu
+predposledni [x,_] = x
+predposledni (_:xs) = predposledni xs
+
+--napiste funkci prvek a xs, ktera zjisti, jestli seznam xs obsahuje prvek a
+prvek _ [] = False
+prvek a (x:xs)
+    | a == x = True
+    | otherwise = prvek a xs
+
+--napiste funkci nty n xs, ktera vrati n-ty prvek seznamu xs
+nty 1 (x:_) = x
+nty n (_:xs) = nty (n - 1) xs
