@@ -59,3 +59,21 @@ prvek a (x:xs)
 --napiste funkci nty n xs, ktera vrati n-ty prvek seznamu xs
 nty 1 (x:_) = x
 nty n (_:xs) = nty (n - 1) xs
+
+--napiste funkci smazPrvni x xs, ktera ze seznamu xs smaze prvni vyskyt prvku x
+smazPrvni _ [] = [] --prvek neni nalezen - vratime puvodni seznam
+smazPrvni a (x : xs)
+    | a == x = xs
+    | otherwise = x : (smazPrvni a xs)
+
+--napiste rekurzivni funkci smazVsechny x xs, ktera ze seznamu xs smaze vsechny vyskyty prvku x
+smazVsechny _ [] = []
+smazVsechny a (x : xs)
+    | a == x = smazVsechny a xs
+    | otherwise = x : (smazVsechny a xs)
+
+--napiste rekurzivni funkci otoc s, ktera otoci poradi prvku seznamu s
+otoc s = otoc' s []
+
+otoc' [] akumulator = akumulator
+otoc' (x:xs) akumulator = otoc' xs (x:akumulator)
